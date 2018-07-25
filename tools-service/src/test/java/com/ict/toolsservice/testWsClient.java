@@ -19,7 +19,7 @@ public class testWsClient {
 
     public static void main(String[] args) {
 
-        String url = "ws://localhost:6437/ws";  //Srinath
+        String url = "ws://localhost:6437/ws";
         String  protocols = "com.sap.dep.protocolplugin.http.inputandaction";
 
         String  token = "7AgypQyxu7spVCO13QhsGRFoQIIOjoXH";  //huawei-demo

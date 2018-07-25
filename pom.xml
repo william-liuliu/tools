@@ -6,7 +6,7 @@
     <groupId>com.ict</groupId>
     <artifactId>tools</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>tools</name>
     <description>tool collection for poc</description>
@@ -31,6 +31,7 @@
 
         <google-gson.version>2.8.5</google-gson.version>
         <jetty-websocket.version>9.4.12.RC0</jetty-websocket.version>
+        <jackson.version>2.9.6</jackson.version>
 
         <tools-service-version>0.0.1-SNAPSHOT</tools-service-version>
         <tools-web-version>0.0.1-SNAPSHOT</tools-web-version>
@@ -95,6 +96,7 @@
                 <artifactId>logback-classic</artifactId>
                 <version>1.1.7</version>
             </dependency>
+
 
         </dependencies>
     </dependencyManagement>
