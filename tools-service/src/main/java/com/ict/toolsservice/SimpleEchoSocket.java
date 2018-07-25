@@ -2,6 +2,7 @@ package com.ict.toolsservice;
 
 import com.google.gson.Gson;
 import com.ict.toolsmodel.AbstractMessage;
+import com.ict.toolsmodel.IotEdgeMessage;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.StatusCode;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
@@ -32,7 +33,7 @@ public class SimpleEchoSocket {
 
     private Session session;
 
-    public SimpleEchoSocket(AbstractMessage content)
+    public SimpleEchoSocket(IotEdgeMessage content)
     {
         this.content = content;
         this.closeLatch = new CountDownLatch(1);
@@ -49,10 +50,10 @@ public class SimpleEchoSocket {
     @OnWebSocketConnect
     public void onConnect(Session session)
     {
-        logger.info("Got connect: %s%n",session);
+        logger.info("Got connect: "+session);
         this.session = session;
         String jsonStr = new Gson().toJson(content);
-        logger.info("send message is: %s%n",jsonStr);
+        logger.info("IoT_Edge send message is: "+jsonStr);
         try
         {
             Future<Void> fut;
@@ -70,7 +71,7 @@ public class SimpleEchoSocket {
     @OnWebSocketMessage
     public void onMessage(String msg)
     {
-        logger.info("Got msg: %s%n",msg);
+        logger.info("Got msg: "+msg);
     }
 
     public boolean awaitClose(int duration, TimeUnit unit) throws InterruptedException

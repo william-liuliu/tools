@@ -1,5 +1,7 @@
 package com.ict.toolsmodel;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,37 +14,40 @@ import java.util.List;
  */
 public class IotEdgeMessage extends AbstractMessage {
 
-    private String  token ;
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
+    //private String  token ;
+    private String timestamp;
     private String  deviceId ;
     private String  deviceTag ;
     private List<SensorReadings> readings ;
 
-    public IotEdgeMessage(String token, String deviceId, String deviceTag) {
-        this.token = token;
+    public IotEdgeMessage( String deviceId, String deviceTag) {
+
+        this.timestamp = Instant.now().toString();
         this.deviceId = deviceId;
         this.deviceTag = deviceTag;
         this.readings = new ArrayList();
     }
 
     private class SensorReadings {
-        private String  sensorProfileId ;  //TODO: CHANGE THIS!!
+        private String  sensorProfileName ;  //TODO: CHANGE THIS!!
         private String  sensorId ;
         private String  sensorTag ;
         private double  readingValue ;
 
         public SensorReadings(String sensorProfileId, String sensorId, String sensorTag, double readingValue) {
-            this.sensorProfileId = sensorProfileId;
+            this.sensorProfileName = sensorProfileId;
             this.sensorId = sensorId;
             this.sensorTag = sensorTag;
             this.readingValue = readingValue;
         }
 
-        public String getSensorProfileId() {
-            return sensorProfileId;
+        public String getSensorProfileName() {
+            return sensorProfileName;
         }
 
-        public void setSensorProfileId(String sensorProfileId) {
-            this.sensorProfileId = sensorProfileId;
+        public void setSensorProfileName(String sensorProfileName) {
+            this.sensorProfileName = sensorProfileName;
         }
 
         public String getSensorId() {
@@ -70,9 +75,10 @@ public class IotEdgeMessage extends AbstractMessage {
         }
     }
 
-    public void setReadings(String sensorProfileId,String sensorId,String sensorTag,double readingValue) {
+    public void setReadings(String sensorProfileName,String sensorId,String sensorTag,double readingValue) {
 
-        this.readings.add(new SensorReadings(sensorProfileId,sensorId,sensorTag,readingValue));
+        this.readings.add(new SensorReadings(sensorProfileName,sensorId,sensorTag,readingValue));
 
     }
+
 }

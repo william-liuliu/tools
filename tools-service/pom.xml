@@ -26,10 +26,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.eclipse.jetty.websocket</groupId>
             <artifactId>javax-websocket-client-impl</artifactId>
         </dependency>
@@ -40,8 +36,16 @@
         <dependency>
             <groupId>com.ict</groupId>
             <artifactId>tools-model</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web-services</artifactId>
+            </dependency>
+
     </dependencies>
 
     <build>

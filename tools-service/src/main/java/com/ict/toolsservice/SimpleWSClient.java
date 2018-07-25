@@ -1,10 +1,12 @@
 package com.ict.toolsservice;
 
 import com.ict.toolsmodel.AbstractMessage;
+import com.ict.toolsmodel.IotEdgeMessage;
 import org.eclipse.jetty.websocket.client.ClientUpgradeRequest;
 import org.eclipse.jetty.websocket.client.WebSocketClient;
 
 import java.net.URI;
+import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,13 +22,13 @@ public class SimpleWSClient {
     private WebSocketClient client ;
     private SimpleEchoSocket socket ;
 
-    public SimpleWSClient(AbstractMessage content, String wsURL) {
+    public SimpleWSClient(IotEdgeMessage content, String wsURL) {
         this.wsURL = wsURL;
         client = new WebSocketClient();
         socket = new SimpleEchoSocket(content);
     }
 
-    public void sendMessage(AbstractMessage content){
+    public void sendMessage(IotEdgeMessage content){
 
         try
         {
@@ -34,6 +36,7 @@ public class SimpleWSClient {
 
             URI wsEndPoint = new URI(wsURL);
             ClientUpgradeRequest request = new ClientUpgradeRequest();
+            //request.setHeader( "Authorization", "Basic: " + Base64.getEncoder().encodeToString(content.getToken().getBytes()));
             client.connect(socket,wsEndPoint,request);
             System.out.printf("Connecting to : %s%n",wsURL);
 

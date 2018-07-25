@@ -3,6 +3,11 @@ package com.ict.toolsservice;
 
 import com.ict.toolsmodel.IotEdgeMessage;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.HashSet;
+
 /**
  * @author liuwei
  * @Title: testWsClient
@@ -14,20 +19,19 @@ public class testWsClient {
 
     public static void main(String[] args) {
 
-        String url = "wss://wdflbmd15873.wdf.sap.corp:6443/ws";  //Srinath
+        String url = "ws://localhost:6437/ws";  //Srinath
         String  protocols = "com.sap.dep.protocolplugin.http.inputandaction";
 
-        String  token = "71AA540962F382D7E5EFD6DA84142F2D";  //Srinath
-        String  deviceId = "Device1";
-        String  deviceTag = "";
-        String  sensorProfileId = "6e9b053d-05df-4486-b342-12b9fd39ab64";
+        String  token = "7AgypQyxu7spVCO13QhsGRFoQIIOjoXH";  //huawei-demo
+        String  deviceId = "PCSimulator-WS-Client";
+        String  deviceTag = "WSClient";
+        String  sensorProfileName = "Huawei-demo2";
         String  sensorId = "Sensor1";
         String  sensorTag = "";
-        double  readingValue = 70.14;
+        double  readingValue = 9.77;
 
-
-        IotEdgeMessage msg = new IotEdgeMessage(token,deviceId,deviceTag);
-        msg.setReadings(sensorProfileId,sensorId,sensorTag,readingValue);
+        IotEdgeMessage msg = new IotEdgeMessage(deviceId,deviceTag);
+        msg.setReadings(sensorProfileName,sensorId,sensorTag,readingValue);
 
         SimpleWSClient wsClient = new SimpleWSClient(msg,url);
 
